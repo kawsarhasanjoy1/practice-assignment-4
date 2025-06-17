@@ -8,10 +8,8 @@ import bcrypt from "bcrypt";
 
 const loginUser = async (payload: TLoginUser) => {
   const user = await userModel.isExistUserField(payload?.email);
-  const isPasswordMatch = await userModel.isPasswordMatch(payload?.email,payload?.password)
-  if (!isPasswordMatch) {
-    
-  }
+   await userModel.isPasswordMatch(payload?.email,payload?.password)
+ 
   const jwtPayload = {
     email: user?.email,
     role: user.role,

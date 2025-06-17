@@ -18,9 +18,7 @@ const model_1 = require("../user/model");
 const auth_utils_1 = require("./auth.utils");
 const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield model_1.userModel.isExistUserField(payload === null || payload === void 0 ? void 0 : payload.email);
-    const isPasswordMatch = yield model_1.userModel.isPasswordMatch(payload === null || payload === void 0 ? void 0 : payload.email, payload === null || payload === void 0 ? void 0 : payload.password);
-    if (!isPasswordMatch) {
-    }
+    yield model_1.userModel.isPasswordMatch(payload === null || payload === void 0 ? void 0 : payload.email, payload === null || payload === void 0 ? void 0 : payload.password);
     const jwtPayload = {
         email: user === null || user === void 0 ? void 0 : user.email,
         role: user.role,
